@@ -1,0 +1,29 @@
+<!-- Notes -->
+<!--
+
+Using the Mobile First template for details pages is great for a responsive solution to your IDX Broker pages.
+However, setting up lead registration for the photogallery is pointless.  Unless, you use the script below and a little CSS. 
+You can hide the player controls and make the main image a link to the photogallery.
+
+-->
+<style>
+	div#IDX-detailsShowcaseSlides {
+		display: none;
+	}
+	a#IDX-arrow-previous, a#IDX-arrow-next {
+		display: none !important;
+	}
+	div#IDX-main div#IDX-primaryPhoto a.IDX-thumbnail {
+		cursor: initial !important;
+	}
+</style>
+<script>
+	document.addEventListener("DOMContentLoaded", function(){
+		var replaLink = document.getElementById("IDX-primaryPhoto");
+		var origImg = document.getElementById("IDX-detailsPrimaryImg");
+		var photoGalURL = document.getElementById("IDX-photoGalleryLink");
+		var linkRef = photoGalURL.getAttribute("href");
+		var replaImg = "<a href='" + linkRef + "' class='IDX-thumbnail'>" + origImg.outerHTML + "</a><a id='IDX-arrow-previous' class='IDX-arrow'><i class='fa fa-chevron-left'></i></a><a id='IDX-arrow-next' class='IDX-arrow'><i class='fa fa-chevron-right'></i></a></div>";
+		replaLink.innerHTML = replaImg;	
+	});
+</script>
